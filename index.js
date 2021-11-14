@@ -69,7 +69,9 @@ let getCurrentUTXOs = axios.post('http://localhost:3572/v1/cardano/address/mints
                             let policyID = txInput.unit.substring(0, 56)
                             let tokenNameHex = txInput.unit.substring(56)
                             let tokenName = hexToUtf8(tokenNameHex)
-                            let mint =  {address, txHash, recieved : txInput, unspent: {output: txOutput.quantity, txix}, policyID, tokenName, sentStatus: ""}
+                            let unspent = {output: txOutput.quantity, txix} 
+
+                            let mint =  {address, txHash, recieved : txInput, unspent, policyID, tokenName, sentStatus: ""}
 
                             if (address != options.address) {
                                 mint.sentStatus = true
@@ -88,14 +90,16 @@ let getCurrentUTXOs = axios.post('http://localhost:3572/v1/cardano/address/mints
                             let txix = `${txHash}#${utxo.output_index}` 
                             let customerAddress = utxo.inputAddress
                             let payment = txInput.quantity / 1000000
+                            let txOutput = utxo.amount[utxo.output_index]
+                            let unspent = {output: txOutput.quantity, txix} 
 
                             if (payment >= 20) {
-                                let validPayment = {txHash, customerAddress, payment, recievingAddress: utxo.address, lovelace: txInput.quantity, txix}
+                                let validPayment = {txHash, customerAddress, payment, recievingAddress: utxo.address, lovelace: txInput.quantity, txix, unspent}
                                 paymentsReceived.push(validPayment)
                                 return validPayment
 
                             } else {
-                                let invalidPayment = {txHash, address, customerAddress, status: "Payment below 20ADA"}
+                                let invalidPayment = {txHash, address, customerAddress, status: "Payment below 20ADA", unspent}
                                 invalidPayments.push(invalidPayment) 
                                 return invalidPayment 
                             }
