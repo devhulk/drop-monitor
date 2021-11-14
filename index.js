@@ -1,4 +1,6 @@
-import fetch from 'node-fetch';
+const { default: axios } = require("axios")
+const { ReadPreferenceMode } = require("mongodb")
+
 // create Wallet
 let createWallet = () => {
 
@@ -25,14 +27,10 @@ let options = {
 
 let request = JSON.stringify(options)
 
-const response = fetch('http://localhost:3572/v1/cardano/mint/asset ', {
-    method: 'POST', 
-    body: request,
-    headers: {'Content-Type': 'application/json'}
-})
-.then((response) => {
-    return response
-})
+
+let response = axios.post('http://localhost:3572/v1/cardano/mint/asset', {'Content-Type': 'application/json', body: request})
+                .then(response => console.log(response))
+                .catch(e => console.log(e))
 
 console.log(response);
 
