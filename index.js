@@ -69,7 +69,7 @@ axios.post('http://localhost:3572/v1/cardano/address/mints', request,{ headers: 
                             let reciever = utxo.address
                             if (reciever.address == options.address) {
                                 sent = false
-                            } else {
+                            } else if (reciever.address != options.address) {
                                 sent = true
                             }
 
