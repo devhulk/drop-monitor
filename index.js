@@ -57,7 +57,7 @@ axios.post('http://localhost:3572/v1/cardano/address/mints', request,{ headers: 
                             let address = utxo.address
                             let txInput = utxo.amount[1]
                             let txOutput = utxo.amount[utxo.output_index]
-                            let policyID = txInput.unit.substring(0, 57)
+                            let policyID = txInput.unit.substring(0, 56)
                             console.log(policyID)
                             let tokenNameHex = txInput.unit.substring(56)
                             console.log(tokenNameHex)
