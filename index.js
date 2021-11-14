@@ -49,10 +49,17 @@ const convert = (from, to) => str => Buffer.from(str, from).toString(to)
 const utf8ToHex = convert('utf8', 'hex')
 const hexToUtf8 = convert('hex', 'utf8')
 
-let getMinted = axios.post('http://localhost:3572/v1/cardano/address/mints', request,{ headers: {'Content-Type': 'application/json'}})
+let sent = []
+let minted = []
+let paymentsReceived = []
+let invalidPayments = []
+
+let dropMonitor = {} 
+
+let getCurrentUTXOs = axios.post('http://localhost:3572/v1/cardano/address/mints', request,{ headers: {'Content-Type': 'application/json'}})
                 .then(response => {
                     const txs = JSON.parse(response.data)
-                    let mintedTokens = txs.map((utxo) => {
+                    let myTXs = txs.map((utxo) => {
                         if (utxo.amount.length >= 2) {
                             let address = utxo.address
                             let txHash = utxo["txHash"]
@@ -62,29 +69,42 @@ let getMinted = axios.post('http://localhost:3572/v1/cardano/address/mints', req
                             let policyID = txInput.unit.substring(0, 56)
                             let tokenNameHex = txInput.unit.substring(56)
                             let tokenName = hexToUtf8(tokenNameHex)
+                            let mint =  {address, txHash, recieved : txInput, unspent: {output: txOutput.quantity, txix}, policyID, tokenName, sentStatus: ""}
 
                             if (address != options.address) {
-                                utxo.sent = true
+                                mint.sentStatus = true
+                                sent.push(mint)
                             } else {
-                                utxo.sent = false
+                                mint.sentStatus = false
+                                minted.push(mint)
                             }
+                            return mint
 
-                            return {address, txHash, recieved : txInput, unspent: {output: txOutput.quantity, txix}, policyID, tokenName, sentStatus: utxo.sent}
                         } else {
 
                             let address = utxo.address
                             let txInput = utxo.amount[0]
+                            let txix = `${txHash}#${utxo.output_index}` 
                             let customerAddress = utxo.inputAddress
                             let payment = txInput.quantity / 1000000
 
                             if (payment >= 20) {
-                                return {customerAddress, payment, recievingAddress: utxo.address, lovelace: txInput.quantity, rawData: utxo}
+                                let validPayment = {customerAddress, payment, recievingAddress: utxo.address, lovelace: txInput.quantity, txix}
+                                paymentsReceived.push(validPayment)
+                                return validPayment
+
                             } else {
-                                return {address, customerAddress, status: "Payment below 20ADA"}
+                                let invalidPayment = {address, customerAddress, status: "Payment below 20ADA"}
+                                invalidPayments.push(invalidPayment) 
+                                return invalidPayment 
                             }
                         } 
                     })
-                     return mintedTokens
+                    dropMonitor.payments = paymentsReceived
+                    dropMonitor.minted = minted
+                    dropMonitor.sent = sent
+                    dropMonitor.failedPurchases = invalidPayments
+                    return dropMonitor
                     //  return response.data
                 })
                 .catch((error) => {
@@ -93,8 +113,8 @@ let getMinted = axios.post('http://localhost:3572/v1/cardano/address/mints', req
 
 
 
-getMinted.then((mints) => {
-    console.log(JSON.stringify(mints))
+getCurrentUTXOs.then((dropMonitor) => {
+    console.log(JSON.stringify(dropMonitor))
 })
 .catch((e) => console.log(e))
 
