@@ -143,7 +143,6 @@ let insertMinted = (minted) => {
 }
 
 getCurrentUTXOs.then(() => {
-    console.log(JSON.stringify(drop))
     insertMinted(dropMonitor.sent)
     .then(results => {
         console.log(JSON.stringify(results))
