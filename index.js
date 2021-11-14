@@ -49,7 +49,7 @@ const convert = (from, to) => str => Buffer.from(str, from).toString(to)
 const utf8ToHex = convert('utf8', 'hex')
 const hexToUtf8 = convert('hex', 'utf8')
 
-axios.post('http://localhost:3572/v1/cardano/address/mints', request,{ headers: {'Content-Type': 'application/json'}})
+let mintedTokens = axios.post('http://localhost:3572/v1/cardano/address/mints', request,{ headers: {'Content-Type': 'application/json'}})
                 .then(response => {
                     const txs = JSON.parse(response.data)
                     let mintedTokens = txs.map((utxo) => {
@@ -72,7 +72,6 @@ axios.post('http://localhost:3572/v1/cardano/address/mints', request,{ headers: 
                             return {address, txHash, recieved : txInput, unspent: {output: txOutput.quantity, txix}, policyID, tokenName, sentStatus: utxo.sent}
                         } 
                     })
-                     console.log(mintedTokens)
                      return mintedTokens
                     //  return response.data
                 })
@@ -81,6 +80,7 @@ axios.post('http://localhost:3572/v1/cardano/address/mints', request,{ headers: 
                   });
 
 
+console.log(mintedTokens)
 // axios.get('http://localhost:3572/v1/cardano/address/mints')
 //                 .then(response => {
 //                     console.log(response.data)
