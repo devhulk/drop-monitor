@@ -51,8 +51,7 @@ const hexToUtf8 = convert('hex', 'utf8')
 
 axios.post('http://localhost:3572/v1/cardano/address/mints', request,{ headers: {'Content-Type': 'application/json'}})
                 .then(response => {
-                    const txs = response.data
-                    console.log(txs)
+                    const txs = JSON.parse(response.data)
                     let mintedTokens = txs.map((utxo) => {
                         if (utxo.amount.length >= 2) {
                             let txInput = utxo.amount[1]
