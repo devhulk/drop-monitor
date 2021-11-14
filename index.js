@@ -58,6 +58,7 @@ axios.post('http://localhost:3572/v1/cardano/address/mints', request,{ headers: 
                             let txHash = utxo["txHash"]
                             let txInput = utxo.amount[1]
                             let txOutput = utxo.amount[utxo.output_index]
+                            let txix = `${txHash}#${utxo.output_index}` 
                             let policyID = txInput.unit.substring(0, 56)
                             let tokenNameHex = txInput.unit.substring(56)
                             let tokenName = hexToUtf8(tokenNameHex)
@@ -68,7 +69,7 @@ axios.post('http://localhost:3572/v1/cardano/address/mints', request,{ headers: 
                                 utxo.sent = false
                             }
 
-                            return {address, txHash, recieved : txInput, sent: txOutput, policyID, tokenName, sentStatus: utxo.sent}
+                            return {address, txHash, recieved : txInput, unspent: {output: txOutput.quantity, txix}, policyID, tokenName, sentStatus: utxo.sent}
                         } 
                     })
                      console.log(mintedTokens)
