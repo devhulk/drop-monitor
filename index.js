@@ -114,7 +114,7 @@ let getCurrentUTXOs = axios.post('http://localhost:3572/v1/cardano/address/mints
 
 
 
-getCurrentUTXOs.then((dropMonitor) => {
+getCurrentUTXOs.then(() => {
     console.log(JSON.stringify(dropMonitor))
 })
 .catch((e) => console.log(e))
