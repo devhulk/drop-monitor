@@ -39,12 +39,20 @@ let request = JSON.stringify(options)
 //                     console.log(error.toJSON())
 //                   });
 
-axios.get('http://localhost:3572/v1/cardano/mints')
+axios.post('http://localhost:3572/v1/cardano/address/mints',request ,{ headers: {'Content-Type': 'application/json'}})
                 .then(response => {
                     console.log(response.data)
                 })
                 .catch((error) => {
                     console.log(error.toJSON())
                   });
+
+// axios.get('http://localhost:3572/v1/cardano/address/mints')
+//                 .then(response => {
+//                     console.log(response.data)
+//                 })
+//                 .catch((error) => {
+//                     console.log(error.toJSON())
+//                   });
 
 
