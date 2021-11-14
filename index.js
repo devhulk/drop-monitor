@@ -71,7 +71,15 @@ let getMinted = axios.post('http://localhost:3572/v1/cardano/address/mints', req
 
                             return {address, txHash, recieved : txInput, unspent: {output: txOutput.quantity, txix}, policyID, tokenName, sentStatus: utxo.sent}
                         } else {
-                            return {customerAddress: utxo.address, payments: utxo.amount, rawData: utxo}
+
+                            let txInput = utxo.amount[0]
+                            let payment = txInput.quantity / 1000000
+
+                            if (payment > 20) {
+                                return {payment, recievingAddress: utxo.address, lovelace: txInput.quantity, rawData: utxo}
+                            } else {
+                                return {address, status: "Payment below 20ADA"}
+                            }
                         } 
                     })
                      return mintedTokens
