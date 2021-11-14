@@ -30,7 +30,7 @@ let request = JSON.stringify(options)
 
 let response = axios.post('http://localhost:3572/v1/cardano/mint/asset', {'Content-Type': 'application/json', body: request})
                 .then(response => console.log(response))
-                .catch(e => console.log(e))
+                .catch(e => console.log({response: e.response.data, status: e.response.status, headers: e.response.headers}))
 
 console.log(response);
 
