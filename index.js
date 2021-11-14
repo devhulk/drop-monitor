@@ -30,11 +30,21 @@ let request = JSON.stringify(options)
 
 let response = axios.post('http://localhost:3572/v1/cardano/mint/asset', {'Content-Type': 'application/json', body: request})
                 .then(response => console.log(response))
-                .catch((e) => {
-                    if (e.response) {
-                        console.log({response: e.response.data, status: e.response.status, headers: e.response.headers})
+                .catch((error) => {
+                    if (error.response) {
+                      // Request made and server responded
+                      console.log(error.response.data);
+                      console.log(error.response.status);
+                      console.log(error.response.headers);
+                    } else if (error.request) {
+                      // The request was made but no response was received
+                      console.log(error.request);
+                    } else {
+                      // Something happened in setting up the request that triggered an Error
+                      console.log('Error', error.message);
                     }
-                });
+                
+                  });
 
 console.log(response);
 
