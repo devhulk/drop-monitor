@@ -60,7 +60,7 @@ axios.post('http://localhost:3572/v1/cardano/address/mints', request,{ headers: 
                             console.log(policyID)
                             let tokenNameHex = txOutput.unit.substring(56)
                             console.log(tokenNameHex)
-                            let tokenName = tokenNameHex.convert('hex', 'utf8')
+                            let tokenName = tokenNameHex.hexToUtf8('hex', 'utf8')
                             console.log(tokenName)
 
                             let reciever = utxo.address
@@ -69,9 +69,10 @@ axios.post('http://localhost:3572/v1/cardano/address/mints', request,{ headers: 
                             } else {
                                 utxo.send = true
                             }
-                        }
+                        } 
                     })
                      console.log(mintedTokens)
+                     return response.data
                 })
                 .catch((error) => {
                     console.log(error.toJSON())
