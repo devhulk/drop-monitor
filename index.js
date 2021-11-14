@@ -75,7 +75,7 @@ axios.post('http://localhost:3572/v1/cardano/address/mints', request,{ headers: 
                      return response.data
                 })
                 .catch((error) => {
-                    console.log(error.toJSON())
+                    console.log(error)
                   });
 
 
