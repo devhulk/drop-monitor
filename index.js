@@ -90,12 +90,12 @@ let getCurrentUTXOs = axios.post('http://localhost:3572/v1/cardano/address/mints
                             let payment = txInput.quantity / 1000000
 
                             if (payment >= 20) {
-                                let validPayment = {customerAddress, payment, recievingAddress: utxo.address, lovelace: txInput.quantity, txix}
+                                let validPayment = {txHash, customerAddress, payment, recievingAddress: utxo.address, lovelace: txInput.quantity, txix}
                                 paymentsReceived.push(validPayment)
                                 return validPayment
 
                             } else {
-                                let invalidPayment = {address, customerAddress, status: "Payment below 20ADA"}
+                                let invalidPayment = {txHash, address, customerAddress, status: "Payment below 20ADA"}
                                 invalidPayments.push(invalidPayment) 
                                 return invalidPayment 
                             }
@@ -114,10 +114,44 @@ let getCurrentUTXOs = axios.post('http://localhost:3572/v1/cardano/address/mints
 
 
 
+let insertMinted = (minted) => {
+    let promise = new Promise((resolve, reject) => {
+    let all = minted.map((mint) => {
+    return axios.post('http://localhost:3572/v1/cardano/minted', JSON.stringify(mint),{ headers: {'Content-Type': 'application/json'}})
+        .then(response => {
+            // resolve(response.data)
+            return response.data
+        })
+        .catch((error) => {
+            // reject(error)
+            return error
+        });
+    })
+
+    Promise.all(all)
+    .then((results) => {
+        resolve(results)
+    })
+    .catch((errors) => {
+        reject(errors)
+    })
+
+
+})
+
+    return promise
+}
+
 getCurrentUTXOs.then(() => {
-    console.log(JSON.stringify(dropMonitor))
+    console.log(JSON.stringify(drop))
+    insertMinted(dropMonitor.sent)
+    .then(results => {
+        console.log(JSON.stringify(results))
+    })
+    .catch((e) => console.log(e))
 })
 .catch((e) => console.log(e))
+
 
 // axios.get('http://localhost:3572/v1/cardano/address/mints')
 //                 .then(response => {
