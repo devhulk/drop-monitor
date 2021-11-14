@@ -105,7 +105,7 @@ let getCurrentUTXOs = axios.post('http://localhost:3572/v1/cardano/address/mints
                     dropMonitor.minted = minted
                     dropMonitor.sent = sent
                     dropMonitor.failedPurchases = invalidPayments
-                    return dropMonitor
+                    return myTXs
                     //  return response.data
                 })
                 .catch((error) => {
