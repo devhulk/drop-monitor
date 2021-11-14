@@ -19,7 +19,6 @@
   },
   "homepage": "https://github.com/devhulk/drop-monitor#readme",
   "devDependencies": {
-    "@babel/preset-es2016": "*",
     "babel-cli": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
     "mongodb": "^4.1.3",
