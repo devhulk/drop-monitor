@@ -73,7 +73,7 @@ axios.post('http://localhost:3572/v1/cardano/address/mints', request,{ headers: 
                                 sent = true
                             }
 
-                            return {txInput, txOutput, policyID, tokenName, status}
+                            return {txInput, txOutput, policyID, tokenName, sent}
                         } 
                     })
                      console.log(mintedTokens)
