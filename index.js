@@ -47,6 +47,7 @@ let request = JSON.stringify(options)
 let txs = axios.post('http://localhost:3572/v1/cardano/address/mints', request,{ headers: {'Content-Type': 'application/json'}})
                 .then(response => {
                     console.log(response.data)
+                    return response.data
                 })
                 .catch((error) => {
                     console.log(error.toJSON())
