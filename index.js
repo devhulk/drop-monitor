@@ -53,8 +53,6 @@ axios.post('http://localhost:3572/v1/cardano/address/mints', request,{ headers: 
                 .then(response => {
                     const txs = JSON.parse(response.data)
                     let mintedTokens = txs.map((utxo) => {
-                            let sent = false 
-
                         if (utxo.amount.length >= 2) {
                             let address = utxo.address
                             let txInput = utxo.amount[1]
@@ -68,11 +66,12 @@ axios.post('http://localhost:3572/v1/cardano/address/mints', request,{ headers: 
 
                             let reciever = utxo.address
                             if (reciever.address != options.address) {
-                                console.log('sent')
-                                sent = true
+                                utxo.sent = true
+                            } else {
+                                utxo.sent = false
                             }
 
-                            return {address, txInput, txOutput, policyID, tokenName, sent}
+                            return {address, txInput, txOutput, policyID, tokenName, sent: utxo.sent}
                         } 
                     })
                      console.log(mintedTokens)
