@@ -28,7 +28,7 @@ let options = {
 let request = JSON.stringify(options)
 
 
-axios.post('http://localhost:3572/v1/cardano/mint/asset', {'Content-Type': 'application/json', body: request})
+axios.post('http://localhost:3572/v1/cardano/mint/asset',request ,{ headers: {'Content-Type': 'application/json'}})
                 .then(response => console.log(response.data))
                 .catch((error) => {
                     if (error.response) {
