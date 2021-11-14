@@ -63,6 +63,7 @@ let getCurrentUTXOs = axios.post('http://localhost:3572/v1/cardano/address/mints
                         if (utxo.amount.length >= 2) {
                             let address = utxo.address
                             let txInput = utxo.amount[1]
+                            let txHash = utxo["txHash"]
                             let txOutput = utxo.amount[utxo.output_index]
                             let txix = `${txHash}#${utxo.output_index}` 
                             let policyID = txInput.unit.substring(0, 56)
