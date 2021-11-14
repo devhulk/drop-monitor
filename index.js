@@ -84,7 +84,7 @@ let getMinted = axios.post('http://localhost:3572/v1/cardano/address/mints', req
 
 
 getMinted.then((mints) => {
-    console.log(mints)
+    console.log(JSON.stringify(mints))
 })
 .catch((e) => console.log(e))
 
