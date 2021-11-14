@@ -64,8 +64,7 @@ axios.post('http://localhost:3572/v1/cardano/address/mints', request,{ headers: 
                             let tokenName = hexToUtf8(tokenNameHex)
                             console.log(tokenName)
 
-                            let reciever = utxo.address
-                            if (reciever.address != options.address) {
+                            if (address != options.address) {
                                 utxo.sent = true
                             } else {
                                 utxo.sent = false
