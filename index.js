@@ -80,7 +80,7 @@ let getMinted = axios.post('http://localhost:3572/v1/cardano/address/mints', req
                             if (payment > 20) {
                                 return {customerAddress, payment, recievingAddress: utxo.address, lovelace: txInput.quantity, rawData: utxo}
                             } else {
-                                return {address, status: "Payment below 20ADA"}
+                                return {address, customerAddress, status: "Payment below 20ADA"}
                             }
                         } 
                     })
