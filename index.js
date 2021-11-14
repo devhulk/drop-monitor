@@ -1,6 +1,7 @@
 const { default: axios } = require("axios")
-const req = require("express/lib/request")
-const { ReadPreferenceMode } = require("mongodb")
+
+
+
 
 // create Wallet
 let createWallet = () => {
@@ -42,7 +43,8 @@ let request = JSON.stringify(options)
 //                     console.log(error.toJSON())
 //                   });
 
-axios.post('http://localhost:3572/v1/cardano/address/mints', request,{ headers: {'Content-Type': 'application/json'}})
+
+let txs = axios.post('http://localhost:3572/v1/cardano/address/mints', request,{ headers: {'Content-Type': 'application/json'}})
                 .then(response => {
                     console.log(response.data)
                 })
@@ -50,6 +52,36 @@ axios.post('http://localhost:3572/v1/cardano/address/mints', request,{ headers: 
                     console.log(error.toJSON())
                   });
 
+// 1f9202548139a0441973dd92264d1542f72112d2a8a6cc10482dd226
+// policyID is 56 chars
+const convert = (from, to) => str => Buffer.from(str, from).toString(to)
+const utf8ToHex = convert('utf8', 'hex')
+const hexToUtf8 = convert('hex', 'utf8')
+
+mintedTokens = txs.map((utxo) => {
+    if (utxo.amount.length >= 2) {
+        let txInput = utxo.amount[1]
+        let txOutput = utxo.amount[utxo.output_index]
+        let policyID = txOutput.unit.substring(0, 57)
+        console.log(policyID)
+        let tokenNameHex = txOutput.unit.substring(56)
+        console.log(tokenNameHex)
+        let tokenName = tokenNameHex.convert('hex', 'utf8')
+        console.log(tokenName)
+
+        let reciever = utxo.address
+        if (reciever.address == options.address) {
+            utxo.sent = false
+        } else {
+            utxo.send = true
+        }
+    }
+
+    
+
+
+
+})
 // axios.get('http://localhost:3572/v1/cardano/address/mints')
 //                 .then(response => {
 //                     console.log(response.data)
