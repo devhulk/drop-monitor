@@ -25,13 +25,15 @@ let options = {
 
 let request = JSON.stringify(options)
 
-const response = await fetch('http://localhost:3572/v1/cardano/mint/asset ', {
+const response = fetch('http://localhost:3572/v1/cardano/mint/asset ', {
     method: 'POST', 
     body: request,
     headers: {'Content-Type': 'application/json'}
-});
-const data = await response.json();
+})
+.then((response) => {
+    return response
+})
 
-console.log(data);
+console.log(response);
 
 
