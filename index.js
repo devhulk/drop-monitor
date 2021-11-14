@@ -126,10 +126,6 @@ let insertMinted = (minted) => {
             // resolve(response.data)
             return response.data
         })
-        .catch((error) => {
-            // reject(error)
-            return error
-        });
     })
 
     Promise.all(all)
@@ -147,7 +143,7 @@ let insertMinted = (minted) => {
 }
 
 getCurrentUTXOs.then(() => {
-    insertMinted(dropMonitor.sent)
+    insertMinted(dropMonitor.minted)
     .then(results => {
         console.log(JSON.stringify(results))
     })
