@@ -23,7 +23,7 @@ let metadata = {
             traits: []
         }
         
-let request = JSON.stringify(options("testOne", metadata))
+let request = JSON.stringify(options("testTwo", metadata))
 
 const convert = (from, to) => str => Buffer.from(str, from).toString(to)
 const utf8ToHex = convert('utf8', 'hex')
