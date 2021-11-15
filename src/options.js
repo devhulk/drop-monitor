@@ -1,7 +1,7 @@
 require('dotenv').config()
 
 let options = (walletName = "testOne", metadata = {}, payment = {}, mint = {}) => {
-    return {
+    let config = {
         address : process.env.TEST_MINT_WALLET,
         mintWalletAddr : process.env.TEST_MINT_WALLET,
         walletName : walletName,
@@ -10,7 +10,9 @@ let options = (walletName = "testOne", metadata = {}, payment = {}, mint = {}) =
         mint,
         payment
     }
-    console.log(options)
+
+    console.log(config)
+    return config     
 
 }
 
