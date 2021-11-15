@@ -54,7 +54,7 @@ let getCurrentUTXOs = axios.post('http://localhost:3572/v1/cardano/address/mints
                             let mint =  {address, recieved : txInput, unspent, policyID, tokenName, sentStatus: ""}
                             mint["_id"] = txHash
 
-                            if (address != options.address) {
+                            if (address != utxo.inputAddress) {
                                 mint.sentStatus = true
                                 sent.push(mint)
                             } else {
