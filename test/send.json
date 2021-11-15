@@ -16,18 +16,18 @@
     "sentStatus": false
   },
   "payment": {
-    "_id": "e3dab6c9335b5cfdea51315d8e3229d9098897c5d9498882576364f531619258",
-    "txHash": "e3dab6c9335b5cfdea51315d8e3229d9098897c5d9498882576364f531619258",
+    "_id": "d02062ec64cd2a7d779a4130dc7f0fdc6b0195e738e2963f3eddc06c6d1df2af",
+    "txHash": "d02062ec64cd2a7d779a4130dc7f0fdc6b0195e738e2963f3eddc06c6d1df2af",
     "customerAddress": "addr_test1qp3yf90tk5kf2pe7knpwpalwa6acdlpnje84ylc8p9z4fu2um8gd62tj3s2ds5s3ukcmuw6sz63l2p3r7ypxayxkpx0qggz6gu",
     "payment": {
       "$numberInt": "20"
     },
     "recievingAddress": "addr_test1vprnpeaw6h2yhcjl0m7pcs6235utpz7kh3vzxhqxd8gka8g4s66y9",
     "lovelace": "20000000",
-    "txix": "e3dab6c9335b5cfdea51315d8e3229d9098897c5d9498882576364f531619258#0",
+    "txix": "d02062ec64cd2a7d779a4130dc7f0fdc6b0195e738e2963f3eddc06c6d1df2af#0",
     "unspent": {
       "output": "20000000",
-      "txix": "e3dab6c9335b5cfdea51315d8e3229d9098897c5d9498882576364f531619258#0"
+      "txix": "d02062ec64cd2a7d779a4130dc7f0fdc6b0195e738e2963f3eddc06c6d1df2af#0"
     }
   }
 }
