@@ -1,12 +1,14 @@
 const { default: axios } = require("axios")
 import options from "./options"
 import nft from '../test/nft.json'
+require('dotenv').config()
+let walletName = process.env.WALLET_NAME
 
 let getRandomNFT = nft
 
 let metadata = getRandomNFT
 metadata.amount = 1
-let baseConfig = options("testTwo", metadata)
+let baseConfig = options(walletName, metadata)
 console.log(baseConfig)
 
 let mint = (data) => {

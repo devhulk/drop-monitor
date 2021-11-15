@@ -3,11 +3,13 @@ import { response } from "express"
 import options from "./options"
 import send from '../test/send.json'
 import metadata from '../test/nft.json'
+require('dotenv').config()
+let walletName = process.env.WALLET_NAME
 
 let payment = send.payment
 let mint = send.mint
 
-let request = options("testTwo", metadata, payment, mint)
+let request = options(walletName, metadata, payment, mint)
 console.log(request)
 
 let sendNFT = (data) => {

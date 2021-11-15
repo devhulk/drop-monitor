@@ -1,19 +1,7 @@
 const { default: axios } = require("axios")
 const { default: options } = require("./src/options")
 require('dotenv').config()
-
-
-
-
-// create Wallet
-let createWallet = () => {
-
-}
-
-// create transactions transaction/raw transactions/signed dirs
-let createDirs = () => {
-
-}
+let walletName = process.env.WALLET_NAME
 
 let metadata = {
             asset_id: "anotherNFT1",
@@ -23,7 +11,6 @@ let metadata = {
             traits: []
         }
 
-let walletName = process.env.WALLET_NAME
         
 let request = JSON.stringify(options(walletName, metadata))
 
