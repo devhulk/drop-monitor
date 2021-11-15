@@ -1,5 +1,6 @@
 const { default: axios } = require("axios")
 const { default: options } = require("./src/options")
+require('dotenv').config()
 
 
 
@@ -21,8 +22,10 @@ let metadata = {
             amount: "1",
             traits: []
         }
+
+let walletName = process.env.WALLET_NAME
         
-let request = JSON.stringify(options("testTwo", metadata))
+let request = JSON.stringify(options(walletName, metadata))
 
 const convert = (from, to) => str => Buffer.from(str, from).toString(to)
 const utf8ToHex = convert('utf8', 'hex')
