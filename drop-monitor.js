@@ -189,6 +189,8 @@ let monitor = (interval) => {
     // setInterval(run, interval*1000)
 }
 
+monitor()
+
 // monitor(15)
 
 
