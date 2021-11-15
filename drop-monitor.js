@@ -141,15 +141,15 @@ const run = () => {
     
     getCurrentUTXOs
         .then(() => {
-            updateMinted(dropMonitor.minted)
-            .then(results => {
-            runResults.minted = results 
-            })
-            .catch((e) => console.log(e))
-        .then(() => {
                 updatePayments(dropMonitor.payments)
                 .then(results => {
                     runResults.payments = results 
+                })
+                .catch((e) => console.log(e))
+        .then(() => {
+                updateMinted(dropMonitor.minted)
+                .then(results => {
+                runResults.minted = results 
                 })
                 .catch((e) => console.log(e))
             })
