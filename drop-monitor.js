@@ -1,4 +1,6 @@
 const { default: axios } = require("axios")
+const { default: options } = require("./src/options")
+options
 
 
 
@@ -12,6 +14,7 @@ let createWallet = () => {
 let createDirs = () => {
 
 }
+
 let metadata = {
             asset_id: "anotherNFT1",
             asset_name: "NFT",
