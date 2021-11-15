@@ -78,10 +78,10 @@ let getCurrentUTXOs = axios.post('http://localhost:3572/v1/cardano/address/mints
                             }
                         } 
                     })
-                    dropMonitor.payments = paymentsReceived
-                    dropMonitor.minted = minted
-                    dropMonitor.sent = sent
-                    dropMonitor.failedPurchases = invalidPayments
+                    dropMonitor.payments = paymentsReceived == undefined ? [] : paymentsReceived 
+                    dropMonitor.minted = minted == undefined ? [] : minted
+                    dropMonitor.sent = sent == undefined ? [] : sent
+                    dropMonitor.failedPurchases = invalidPayments == undefined ? [] : sent
                     return myTXs
                     //  return response.data
                 })
