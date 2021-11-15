@@ -98,7 +98,7 @@ let getCurrentUTXOs = axios.post('http://localhost:3572/v1/cardano/address/mints
                     //  return response.data
                 })
                 .catch(function (error) {
-                    console.log(error.response)
+                   reject(error) 
                   });
 
 
@@ -171,7 +171,7 @@ const run = () => {
             })
             .catch((e) => console.log(e))
         })
-        .catch((e) => console.log(e))
+        .catch((e) => e.toJSON())
         // console.log(runResults)
 
 }
