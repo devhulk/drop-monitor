@@ -12,7 +12,7 @@ let mint = (data) => {
     let promise = new Promise((resolve, reject) => {
         axios.post('http://localhost:3572/v1/cardano/mint/asset', JSON.stringify(data), {headers: {'Content-Type': 'application/json'}})
         .then((response) => {
-            resolve(response.data)
+            resolve(JSON.stringify(response.data))
         })
         .catch(e => reject(e))
     })
