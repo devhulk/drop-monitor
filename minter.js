@@ -25,6 +25,6 @@ let mint = (data) => {
 
 mint(baseConfig)
 .then((response) => {
-    console.log(response)
+    console.log(JSON.stringify(response))
 })
 .catch(e => console.log(e))

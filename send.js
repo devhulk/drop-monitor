@@ -1,18 +1,30 @@
 const { default: axios } = require("axios")
 import options from "./src/options"
-import mint from './test/mint.json'
-import payment from './test/payment.json'
+import send from './test/send.json'
 
-let request = JSON.stringify(options("testTwo", metadata))
-let getPayment = JSON.parse(payment)
-let getMint = JSON.parse(mint)
+let payment = send.payment
+let mint = send.mint
 
-let metadata = getRandomNFT
+let request = JSON.stringify(options("testTwo", metadata, payment, mint))
 
-let send = () => {
+let sendNFT = (request) => {
+    let promise = new Promise((resolve, reject) => {
+        axios.post('http://localhost:3572/v1/cardano/mint/sendAsset', request, {'Content-Type': 'application/json'})
+        .then((response) => {
+            let data = JSON.stringify(response.data)
+            resolve(data)
+        })
+        .catch(e => console.log(e))
+    })
 
+    return promise
 }
+
+sendNFT(request)
+.then((response) => {
+    console.log(response)
+})
+.catch(e => console.log(e))
         
 
-console.log(request)
 
