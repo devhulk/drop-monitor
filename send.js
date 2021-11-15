@@ -14,7 +14,7 @@ let sendNFT = (request) => {
             let data = JSON.stringify(response.data)
             resolve(data)
         })
-        .catch(e => console.log(e))
+        .catch(e => reject(e))
     })
 
     return promise
