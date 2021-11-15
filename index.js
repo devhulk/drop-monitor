@@ -148,32 +148,46 @@ let updateSent = (sent) => {
 
 }
 
-getCurrentUTXOs
-.then(() => {
-    updateMinted(dropMonitor.minted)
-    .then(results => {
-        console.log(JSON.stringify(results))
-    })
-    .catch((e) => console.log(e))
-.then(() => {
-        updatePayments(dropMonitor.payments)
-        .then(results => {
-            console.log(JSON.stringify(results))
+let runResults = {} 
+let count = 0
+
+const run = () => {
+    runResults = {} 
+    count++
+    
+    getCurrentUTXOs
+        .then(() => {
+            updateMinted(dropMonitor.minted)
+            .then(results => {
+            runResults.minted = results 
+            })
+            .catch((e) => console.log(e))
+        .then(() => {
+                updatePayments(dropMonitor.payments)
+                .then(results => {
+                    runResults.payments = results 
+                })
+                .catch((e) => console.log(e))
+            })
+            .catch((e) => console.log(e))
+        .then(() => {
+                updateSent(dropMonitor.sent)
+                .then(results => {
+                    runResults.sent = results 
+                })
+                .catch((e) => console.log(e))
+            })
+            .catch((e) => console.log(e))
         })
         .catch((e) => console.log(e))
-    })
-    .catch((e) => console.log(e))
-.then(() => {
-        updateSent(dropMonitor.sent)
-        .then(results => {
-            console.log(JSON.stringify(results))
-        })
-        .catch((e) => console.log(e))
-    })
-    .catch((e) => console.log(e))
-})
-.catch((e) => console.log(e))
 
+}
 
+let monitor = (interval) => {
+    console.log('listening for on chain updates at ', interval, ' second intervals...')
+    setInterval(run, interval*1000)
+}
+
+monitor(15)
 
 
