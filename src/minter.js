@@ -1,6 +1,6 @@
 const { default: axios } = require("axios")
-import options from "./src/options"
-import nft from './test/nft.json'
+import options from "./options"
+import nft from '../test/nft.json'
 
 let getRandomNFT = nft
 
