@@ -184,10 +184,11 @@ const run = () => {
 }
 
 let monitor = (interval) => {
-    console.log('listening for on chain updates at ', interval, ' second intervals...')
-    setInterval(run, interval*1000)
+    run()
+    // console.log('listening for on chain updates at ', interval, ' second intervals...')
+    // setInterval(run, interval*1000)
 }
 
-monitor(15)
+// monitor(15)
 
 
