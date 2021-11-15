@@ -14,7 +14,7 @@ let createDirs = () => {
 }
 
 // create test mint command
-const walletName = "test1"
+const walletName = "testOne"
 // address : "addr_test1vprnpeaw6h2yhcjl0m7pcs6235utpz7kh3vzxhqxd8gka8g4s66y9",
 // mintWalletAddr : "addr_test1vprnpeaw6h2yhcjl0m7pcs6235utpz7kh3vzxhqxd8gka8g4s66y9",
 
@@ -34,17 +34,6 @@ let options = {
 
 let request = JSON.stringify(options)
 
-
-// axios.post('http://localhost:3572/v1/cardano/mint/asset',request ,{ headers: {'Content-Type': 'application/json'}})
-//                 .then(response => {
-//                     console.log(response.data)
-//                 })
-//                 .catch((error) => {
-//                     console.log(error.toJSON())
-//                   });
-
-// 1f9202548139a0441973dd92264d1542f72112d2a8a6cc10482dd226
-// policyID is 56 chars
 const convert = (from, to) => str => Buffer.from(str, from).toString(to)
 const utf8ToHex = convert('utf8', 'hex')
 const hexToUtf8 = convert('hex', 'utf8')
@@ -121,7 +110,7 @@ let getCurrentUTXOs = axios.post('http://localhost:3572/v1/cardano/address/mints
 
 
 
-let insertMinted = (minted) => {
+let updateMinted = (minted) => {
     let promise = new Promise((resolve, reject) => {
     axios.post('http://localhost:3572/v1/cardano/minted', JSON.stringify(minted),{ headers: {'Content-Type': 'application/json'}})
         .then(response => {
@@ -133,7 +122,7 @@ let insertMinted = (minted) => {
     return promise
 }
 
-let insertPayments = (payments) => {
+let updatePayments = (payments) => {
     let promise = new Promise((resolve, reject) => {
     axios.post('http://localhost:3572/v1/cardano/payments', JSON.stringify(payments),{ headers: {'Content-Type': 'application/json'}})
         .then(response => {
@@ -146,15 +135,36 @@ let insertPayments = (payments) => {
 
 }
 
+let updateSent = (sent) => {
+    let promise = new Promise((resolve, reject) => {
+    axios.post('http://localhost:3572/v1/cardano/orders/sent', JSON.stringify(sent),{ headers: {'Content-Type': 'application/json'}})
+        .then(response => {
+            resolve(response.data)
+        })
+        .catch(e => resolve(e))
+    })
+
+    return promise
+
+}
+
 getCurrentUTXOs
 .then(() => {
-    insertMinted(dropMonitor.minted)
+    updateMinted(dropMonitor.minted)
     .then(results => {
         console.log(JSON.stringify(results))
     })
     .catch((e) => console.log(e))
 .then(() => {
-        insertPayments(dropMonitor.payments)
+        updatePayments(dropMonitor.payments)
+        .then(results => {
+            console.log(JSON.stringify(results))
+        })
+        .catch((e) => console.log(e))
+    })
+    .catch((e) => console.log(e))
+.then(() => {
+        updateSent(dropMonitor.sent)
         .then(results => {
             console.log(JSON.stringify(results))
         })
@@ -165,12 +175,5 @@ getCurrentUTXOs
 .catch((e) => console.log(e))
 
 
-// axios.get('http://localhost:3572/v1/cardano/address/mints')
-//                 .then(response => {
-//                     console.log(response.data)
-//                 })
-//                 .catch((error) => {
-//                     console.log(error.toJSON())
-//                   });
 
 
