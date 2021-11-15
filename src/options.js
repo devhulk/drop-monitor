@@ -10,6 +10,7 @@ let options = (walletName = "testOne", metadata = {}, payment = {}, mint = {}) =
         mint,
         payment
     }
+    console.log(options)
 
 }
 
