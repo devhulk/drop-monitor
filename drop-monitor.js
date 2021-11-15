@@ -39,6 +39,7 @@ let dropMonitor = {}
 let getCurrentUTXOs = axios.post('http://localhost:3572/v1/cardano/address/mints', request,{ headers: {'Content-Type': 'application/json'}})
                 .then(response => {
                     const txs = JSON.parse(response.data)
+                    console.log(txs)
                     let myTXs = txs.map((utxo) => {
                         if (utxo.amount.length >= 2) {
                             let address = utxo.address
