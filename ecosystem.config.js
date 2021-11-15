@@ -5,7 +5,6 @@ module.exports = {
       "script": "./dist/drop-monitor.js",
       "error_file": "../log/drop-error.log",
       "out_file": "../log/drop-access.log",
-      "cron_restart": "* * * * *",
       "merge_logs": true,
       "cwd": "./",
       "instances": 1,
