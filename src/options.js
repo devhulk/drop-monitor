@@ -8,6 +8,7 @@ let options = (walletName = "testOne", metadata, payment = {}, mint = {}) => {
         mint,
         payment
     }
+    console.log(data)
 
     return JSON.stringify(data)
 }
