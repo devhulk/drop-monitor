@@ -11,8 +11,7 @@ let sendNFT = (request) => {
     let promise = new Promise((resolve, reject) => {
         axios.post('http://localhost:3572/v1/cardano/mint/sendAsset', request, {'Content-Type': 'application/json'})
         .then((response) => {
-            let data = JSON.stringify(response.data)
-            resolve(data)
+            resolve(response.data)
         })
         .catch(e => reject(e))
     })
