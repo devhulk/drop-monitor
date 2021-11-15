@@ -5,6 +5,7 @@ import nft from './test/nft.json'
 let getRandomNFT = nft
 
 let metadata = getRandomNFT
+metadata.amount = 1
 let baseConfig = options("testTwo", metadata)
 console.log(baseConfig)
 
