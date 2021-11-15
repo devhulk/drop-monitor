@@ -179,7 +179,7 @@ const run = () => {
             .catch((e) => console.log(e))
         })
         .catch((e) => console.log(e))
-        console.log(runResults)
+        // console.log(runResults)
 
 }
 
