@@ -42,6 +42,7 @@ let getCurrentUTXOs = axios.post('http://localhost:3572/v1/cardano/address/mints
                     let myTXs = txs.map((utxo) => {
                         if (utxo.amount.length >= 2) {
                             let address = utxo.address
+                            let customerAddress = utxo.inputAddress
                             let txInput = utxo.amount[1]
                             let txHash = utxo["txHash"]
                             let txOutput = utxo.amount[utxo.output_index]
@@ -51,7 +52,7 @@ let getCurrentUTXOs = axios.post('http://localhost:3572/v1/cardano/address/mints
                             let tokenName = hexToUtf8(tokenNameHex)
                             let unspent = {output: txOutput.quantity, txix} 
 
-                            let mint =  {address, recieved : txInput, unspent, policyID, tokenName, sentStatus: ""}
+                            let mint =  {address, inputAddress: customerAddress, recieved : txInput, unspent, policyID, tokenName, sentStatus: ""}
                             mint["_id"] = txHash
 
                             if (address != utxo.inputAddress) {
