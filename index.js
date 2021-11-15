@@ -71,7 +71,8 @@ let getCurrentUTXOs = axios.post('http://localhost:3572/v1/cardano/address/mints
                             let tokenName = hexToUtf8(tokenNameHex)
                             let unspent = {output: txOutput.quantity, txix} 
 
-                            let mint =  {address, txHash, recieved : txInput, unspent, policyID, tokenName, sentStatus: ""}
+                            let mint =  {address, recieved : txInput, unspent, policyID, tokenName, sentStatus: ""}
+                            mint["_id"] = txHash
 
                             if (address != options.address) {
                                 mint.sentStatus = true
@@ -95,11 +96,13 @@ let getCurrentUTXOs = axios.post('http://localhost:3572/v1/cardano/address/mints
 
                             if (payment >= 20) {
                                 let validPayment = {txHash, customerAddress, payment, recievingAddress: utxo.address, lovelace: txInput.quantity, txix, unspent}
+                                validPayment["_id"] = txHash
                                 paymentsReceived.push(validPayment)
                                 return validPayment
 
                             } else {
                                 let invalidPayment = {txHash, address, customerAddress, status: "Payment below 20ADA", unspent}
+                                invalidPayment["_id"] = txHash
                                 invalidPayments.push(invalidPayment) 
                                 return invalidPayment 
                             }
@@ -120,21 +123,21 @@ let getCurrentUTXOs = axios.post('http://localhost:3572/v1/cardano/address/mints
 
 let insertMinted = (minted) => {
     let promise = new Promise((resolve, reject) => {
-    let all = minted.map((mint) => {
-    return axios.post('http://localhost:3572/v1/cardano/minted', JSON.stringify(mint),{ headers: {'Content-Type': 'application/json'}})
+    // let all = minted.map((mint) => {
+    axios.post('http://localhost:3572/v1/cardano/minted', JSON.stringify(minted),{ headers: {'Content-Type': 'application/json'}})
         .then(response => {
-            // resolve(response.data)
-            return response.data
+            resolve(response.data)
         })
-    })
+        .catch(e => resolve(e))
+    // })
 
-    Promise.all(all)
-    .then((results) => {
-        resolve(results)
-    })
-    .catch((errors) => {
-        reject(errors)
-    })
+    // Promise.all(all)
+    // .then((results) => {
+    //     resolve(results)
+    // })
+    // .catch((errors) => {
+    //     reject(errors)
+    // })
 
 
 })
