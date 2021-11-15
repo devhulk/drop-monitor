@@ -1,6 +1,5 @@
 const { default: axios } = require("axios")
 const { default: options } = require("./src/options")
-options
 
 
 
