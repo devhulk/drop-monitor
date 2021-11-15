@@ -171,7 +171,7 @@ const run = () => {
             })
             .catch((e) => console.log(e))
         })
-        .catch((e) => e.toJSON())
+        .catch((e) => e)
         // console.log(runResults)
 
 }
