@@ -123,32 +123,42 @@ let getCurrentUTXOs = axios.post('http://localhost:3572/v1/cardano/address/mints
 
 let insertMinted = (minted) => {
     let promise = new Promise((resolve, reject) => {
-    // let all = minted.map((mint) => {
     axios.post('http://localhost:3572/v1/cardano/minted', JSON.stringify(minted),{ headers: {'Content-Type': 'application/json'}})
         .then(response => {
             resolve(response.data)
         })
         .catch(e => resolve(e))
-    // })
-
-    // Promise.all(all)
-    // .then((results) => {
-    //     resolve(results)
-    // })
-    // .catch((errors) => {
-    //     reject(errors)
-    // })
-
-
-})
+    })
 
     return promise
 }
 
-getCurrentUTXOs.then(() => {
+let insertPayments = (payments) => {
+    let promise = new Promise((resolve, reject) => {
+    axios.post('http://localhost:3572/v1/cardano/payments', JSON.stringify(payments),{ headers: {'Content-Type': 'application/json'}})
+        .then(response => {
+            resolve(response.data)
+        })
+        .catch(e => resolve(e))
+    })
+
+    return promise
+
+}
+
+getCurrentUTXOs
+.then(() => {
     insertMinted(dropMonitor.minted)
     .then(results => {
         console.log(JSON.stringify(results))
+    })
+    .catch((e) => console.log(e))
+.then(() => {
+        insertPayments(dropMonitor.payments)
+        .then(results => {
+            console.log(JSON.stringify(results))
+        })
+        .catch((e) => console.log(e))
     })
     .catch((e) => console.log(e))
 })
