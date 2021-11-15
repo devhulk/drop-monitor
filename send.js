@@ -4,12 +4,14 @@ import send from './test/send.json'
 
 let payment = send.payment
 let mint = send.mint
+console.log(payment)
+console.log(mint)
 
 let request = options("testTwo",  payment, mint)
 
-let sendNFT = (request) => {
+let sendNFT = (data) => {
     let promise = new Promise((resolve, reject) => {
-        axios.post('http://localhost:3572/v1/cardano/mint/sendAsset', request, {headers: {'Content-Type': 'application/json'}})
+        axios.post('http://localhost:3572/v1/cardano/mint/sendAsset', data, {headers: {'Content-Type': 'application/json'}})
         .then((response) => {
             resolve(response.data)
         })
