@@ -1,6 +1,6 @@
 const { default: axios } = require("axios")
 import { response } from "express"
-import options from "./options"
+import options from "../../src/options"
 import send from './mint-payment.json'
 import metadata from './NINJAPUG32.json'
 require('dotenv').config()
