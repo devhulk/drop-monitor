@@ -1,0 +1,15 @@
+{
+  "_id": "9f66cd7de138a90129cf77f8cd946f514b49145313cae7c6865bd6e1241da0a7",
+  "txHash": "9f66cd7de138a90129cf77f8cd946f514b49145313cae7c6865bd6e1241da0a7",
+  "customerAddress": "addr_test1qp3yf90tk5kf2pe7knpwpalwa6acdlpnje84ylc8p9z4fu2um8gd62tj3s2ds5s3ukcmuw6sz63l2p3r7ypxayxkpx0qggz6gu",
+  "payment": {
+    "$numberInt": "20"
+  },
+  "recievingAddress": "addr_test1vprnpeaw6h2yhcjl0m7pcs6235utpz7kh3vzxhqxd8gka8g4s66y9",
+  "lovelace": "20000000",
+  "txix": "9f66cd7de138a90129cf77f8cd946f514b49145313cae7c6865bd6e1241da0a7#0",
+  "unspent": {
+    "output": "20000000",
+    "txix": "9f66cd7de138a90129cf77f8cd946f514b49145313cae7c6865bd6e1241da0a7#0"
+  }
+}
