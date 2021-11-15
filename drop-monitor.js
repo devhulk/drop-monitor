@@ -12,27 +12,15 @@ let createWallet = () => {
 let createDirs = () => {
 
 }
-
-// create test mint command
-const walletName = "testOne"
-// address : "addr_test1vprnpeaw6h2yhcjl0m7pcs6235utpz7kh3vzxhqxd8gka8g4s66y9",
-// mintWalletAddr : "addr_test1vprnpeaw6h2yhcjl0m7pcs6235utpz7kh3vzxhqxd8gka8g4s66y9",
-
-let options = {
-    address : "addr_test1vpfvdy0rvkawm6zz4l3y5fykyagp5r7g300xv7dhrkxs4aq8mt5vq",
-    mintWalletAddr : "addr_test1vpfvdy0rvkawm6zz4l3y5fykyagp5r7g300xv7dhrkxs4aq8mt5vq",
-    walletName : walletName,
-    config: "testnet",
-    metadata: {
-        asset_id: "anotherNFT1",
-        asset_name: "NFT",
-        ipfsLink: "ipfs://test",
-        amount: "1",
-        traits: []
-    }
-}
-
-let request = JSON.stringify(options)
+let metadata = {
+            asset_id: "anotherNFT1",
+            asset_name: "NFT",
+            ipfsLink: "ipfs://test",
+            amount: "1",
+            traits: []
+        }
+        
+let request = JSON.stringify(options("testOne", metadata))
 
 const convert = (from, to) => str => Buffer.from(str, from).toString(to)
 const utf8ToHex = convert('utf8', 'hex')
