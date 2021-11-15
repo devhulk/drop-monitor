@@ -1,7 +1,7 @@
 const { default: axios } = require("axios")
 import { response } from "express"
-import options from "./src/options"
-import send from './test/send.json'
+import options from "./options"
+import send from '../test/send.json'
 
 let payment = send.payment
 let mint = send.mint
