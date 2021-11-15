@@ -1,13 +1,13 @@
 const { default: axios } = require("axios")
+import { response } from "express"
 import options from "./src/options"
 import send from './test/send.json'
 
 let payment = send.payment
 let mint = send.mint
-console.log(payment)
-console.log(mint)
 
 let request = options("testTwo",  payment, mint)
+console.log(request)
 
 let sendNFT = (data) => {
     let promise = new Promise((resolve, reject) => {
