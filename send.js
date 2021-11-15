@@ -9,7 +9,7 @@ let request = JSON.stringify(options("testTwo",  payment, mint))
 
 let sendNFT = (request) => {
     let promise = new Promise((resolve, reject) => {
-        axios.post('http://localhost:3572/v1/cardano/mint/sendAsset', request, {'Content-Type': 'application/json'})
+        axios.post('http://localhost:3572/v1/cardano/mint/sendAsset', request, {headers: {'Content-Type': 'application/json'}})
         .then((response) => {
             resolve(response.data)
         })
