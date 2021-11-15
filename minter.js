@@ -6,6 +6,7 @@ let getRandomNFT = JSON.parse(nft)
 
 let metadata = getRandomNFT
 let baseConfig = options("testTwo", metadata)
+console.log(baseConfig)
 
 let mint = (data) => {
     let promise = new Promise((resolve, reject) => {
