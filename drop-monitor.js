@@ -179,8 +179,8 @@ const run = () => {
 }
 
 let monitor = (interval) => {
-    console.log('running every 30 sec')
     run()
+    console.log('running every 30 sec')
     // console.log('listening for on chain updates at ', interval, ' second intervals...')
     // setInterval(run, interval*1000)
 }
