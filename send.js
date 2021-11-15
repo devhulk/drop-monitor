@@ -6,7 +6,7 @@ import send from './test/send.json'
 let payment = send.payment
 let mint = send.mint
 
-let request = options("testTwo",  payment, mint)
+let request = options("testTwo", {}, payment, mint)
 console.log(request)
 
 let sendNFT = (data) => {
