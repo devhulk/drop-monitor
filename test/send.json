@@ -1,18 +1,18 @@
 {
   "mint": {
-    "_id": "67eacf11a1a8ac739dbbba24da2f2ecd8f85d1c78d1138b5afd258b2d08118b9",
+    "_id": "697a96c7b11b7712271b72099a0a489bdf2d0bbd30109e3d564a41ede9202c4b",
     "address": "addr_test1vprnpeaw6h2yhcjl0m7pcs6235utpz7kh3vzxhqxd8gka8g4s66y9",
     "inputAddress": "addr_test1vprnpeaw6h2yhcjl0m7pcs6235utpz7kh3vzxhqxd8gka8g4s66y9",
     "recieved": {
-      "unit": "a276ba1acb22ad52929975eb01721f832e66ee1df3ec7c15871abf3b756e646566696e6564",
+      "unit": "a276ba1acb22ad52929975eb01721f832e66ee1df3ec7c15871abf3b4e494e4a415055473332",
       "quantity": "1"
     },
     "unspent": {
-      "output": "19817691",
-      "txix": "67eacf11a1a8ac739dbbba24da2f2ecd8f85d1c78d1138b5afd258b2d08118b9#0"
+      "output": "17457341",
+      "txix": "697a96c7b11b7712271b72099a0a489bdf2d0bbd30109e3d564a41ede9202c4b#0"
     },
     "policyID": "a276ba1acb22ad52929975eb01721f832e66ee1df3ec7c15871abf3b",
-    "tokenName": "undefined",
+    "tokenName": "NINJAPUG32",
     "sentStatus": false
   },
   "payment": {
