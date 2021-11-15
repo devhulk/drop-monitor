@@ -5,7 +5,7 @@ import send from './test/send.json'
 let payment = send.payment
 let mint = send.mint
 
-let request = JSON.stringify(options("testTwo",  payment, mint))
+let request = options("testTwo",  payment, mint)
 
 let sendNFT = (request) => {
     let promise = new Promise((resolve, reject) => {
