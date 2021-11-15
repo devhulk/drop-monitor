@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rimraf dist/ && babel ./ --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files",
     "start": "npm run build && node start dist/drop-monitor.js",
+    "restart": "pm2 restart drop-monitor --cron-restart='* * * * *'",
     "prod": "npm run build && pm2 start dist/drop-monitor.js --cron-restart='* * * * *'"
   },
   "repository": {
