@@ -116,7 +116,7 @@ let updateMinted = (minted) => {
         .then(response => {
             resolve(response.data)
         })
-        .catch(e => resolve(e))
+        .catch(e => reject(e))
     })
 
     return promise
@@ -128,7 +128,7 @@ let updatePayments = (payments) => {
         .then(response => {
             resolve(response.data)
         })
-        .catch(e => resolve(e))
+        .catch(e => reject(e))
     })
 
     return promise
@@ -141,7 +141,7 @@ let updateSent = (sent) => {
         .then(response => {
             resolve(response.data)
         })
-        .catch(e => resolve(e))
+        .catch(e => reject(e))
     })
 
     return promise
