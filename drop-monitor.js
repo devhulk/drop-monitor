@@ -97,7 +97,7 @@ let getCurrentUTXOs = axios.post('http://localhost:3572/v1/cardano/address/mints
                     return myTXs
                     //  return response.data
                 })
-                .catch((error) => {
+                .catch(function (error) {
                     console.log(error.toJSON())
                   });
 
