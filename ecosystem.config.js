@@ -8,7 +8,7 @@ module.exports = {
       "merge_logs": true,
       "cwd": "./",
       "instances": 1,
-      "exec_mode"  : "cluster_mode",
+      "exec_mode"  : "fork",
       "env": {
         "NODE_ENV": "production"
       }
