@@ -1,5 +1,5 @@
 let options = (walletName = "testOne", metadata, payment = {}, mint = {}) => {
-    return {
+    let data = {
         address : "addr_test1vprnpeaw6h2yhcjl0m7pcs6235utpz7kh3vzxhqxd8gka8g4s66y9",
         mintWalletAddr : "addr_test1vprnpeaw6h2yhcjl0m7pcs6235utpz7kh3vzxhqxd8gka8g4s66y9",
         walletName : walletName,
@@ -8,6 +8,8 @@ let options = (walletName = "testOne", metadata, payment = {}, mint = {}) => {
         mint,
         payment
     }
+
+    return JSON.stringify(data)
 }
 
 // address : "addr_test1vprnpeaw6h2yhcjl0m7pcs6235utpz7kh3vzxhqxd8gka8g4s66y9",
