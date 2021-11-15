@@ -38,7 +38,6 @@ let dropMonitor = {}
 
 let getCurrentUTXOs = axios.post('http://localhost:3572/v1/cardano/address/mints', request,{ headers: {'Content-Type': 'application/json'}})
                 .then(response => {
-                    console.log(response.data)
                     const txs = JSON.parse(response.data)
                     let myTXs = txs.map((utxo) => {
                         if (utxo.amount.length >= 2) {
@@ -101,7 +100,7 @@ let getCurrentUTXOs = axios.post('http://localhost:3572/v1/cardano/address/mints
                     if (error.response) {
                       // The request was made and the server responded with a status code
                       // that falls out of the range of 2xx
-                      console.log(error.response)
+                      reject(error.response)
                     }
                   });
 
@@ -153,13 +152,11 @@ const run = () => {
     
     getCurrentUTXOs
         .then(() => {
-            console.log(dropMonitor.minted)
             updateMinted(dropMonitor.minted)
             .then(results => {
             runResults.minted = results 
             })
             .catch((e) => console.log(e))
-            console.log(dropMonitor.payments)
         .then(() => {
                 updatePayments(dropMonitor.payments)
                 .then(results => {
@@ -183,6 +180,7 @@ const run = () => {
 }
 
 let monitor = (interval) => {
+    console.log('running ever 30 sec')
     run()
     // console.log('listening for on chain updates at ', interval, ' second intervals...')
     // setInterval(run, interval*1000)
