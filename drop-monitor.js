@@ -152,7 +152,6 @@ let runResults = {}
 let count = 0
 
 const run = () => {
-    runResults = {} 
     count++
     
     getCurrentUTXOs
@@ -180,6 +179,7 @@ const run = () => {
             .catch((e) => console.log(e))
         })
         .catch((e) => console.log(e))
+        console.log(runResults)
 
 }
 
