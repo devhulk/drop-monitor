@@ -1,0 +1,4 @@
+{
+  "mint": {},
+  "payment": {"_id":"6515bf03a3adc62644a02451c06235f4570f7daf7d2fd269226eae9eb2f6a697","txHash":"6515bf03a3adc62644a02451c06235f4570f7daf7d2fd269226eae9eb2f6a697","customerAddress":"addr1q90ccj048vaxwd0dfpt7wcxd0jskpjry0vxwgjycl04ugusrer6kyuh37cpdvqjp5k203etce7yz7q94yxjpwgv9yuvs57cs36","payment":{"$numberInt":"20"},"recievingAddress":"addr1v8apfp60gzp0cu7fh2gm45nah0hvrr7u427decmdxlrddfglt0df7","lovelace":"20000000","txix":"6515bf03a3adc62644a02451c06235f4570f7daf7d2fd269226eae9eb2f6a697#0","unspent":{"output":"20000000","txix":"6515bf03a3adc62644a02451c06235f4570f7daf7d2fd269226eae9eb2f6a697#0"}}
+}

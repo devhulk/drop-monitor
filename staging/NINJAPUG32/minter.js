@@ -1,6 +1,6 @@
 const { default: axios } = require("axios")
 import options from "./options"
-import nft from '../test/nft.json'
+import nft from './NINJAPUG32.json'
 require('dotenv').config()
 let walletName = process.env.WALLET_NAME
 
