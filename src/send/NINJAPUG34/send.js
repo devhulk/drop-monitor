@@ -2,7 +2,7 @@ const { default: axios } = require("axios")
 import { response } from "express"
 import options from "../../options"
 import send from './mint-payment.json'
-import metadata from './NINJAPUG35.json'
+import metadata from './NINJAPUG34.json'
 require('dotenv').config()
 let walletName = process.env.WALLET_NAME
 
