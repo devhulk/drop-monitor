@@ -1,7 +1,8 @@
 {
   "project": "Puglies",
-  "name": "NINJAPUG33",
-  "image": "ipfs://QmdxjJNB2CVFdoQJuJ8UJDc3PxqGW6YSE6oVuMHVBJDcJX",
+  "name": "NINJAPUG34",
+  "imageLink": "ipfs.io/ipfs/QmcZpq7Dwe8RTjgT2u4mWP3pXnRYYeesBk9CTqhcrDxhGg",
+  "image": "ipfs://QmcZpq7Dwe8RTjgT2u4mWP3pXnRYYeesBk9CTqhcrDxhGg",
   "type": "image/png",
   "authors": [
     "devhulk",
@@ -11,7 +12,7 @@
   "traits": [
     {
       "trait_type": "background",
-      "value": "ninja_bg_green25"
+      "value": "ninja_bg_orange60"
     },
     {
       "trait_type": "body",
@@ -19,7 +20,7 @@
     },
     {
       "trait_type": "ears",
-      "value": "regular_ears50"
+      "value": "black_grey_ears80"
     },
     {
       "trait_type": "head",
@@ -27,16 +28,16 @@
     },
     {
       "trait_type": "nose",
-      "value": "blue_green_goblin80"
+      "value": "pop_smoke80"
     },
     {
       "trait_type": "eyes",
-      "value": "biz_army_green10"
+      "value": "ninja_red"
     },
     {
       "trait_type": "clothing",
-      "value": "orange_ninja60"
+      "value": "pink_ninja15"
     }
   ],
-  "id": "PUGLIES153"
+  "id": "PUGLIES154"
 }
