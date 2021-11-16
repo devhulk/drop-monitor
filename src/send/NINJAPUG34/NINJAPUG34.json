@@ -1,0 +1,42 @@
+{
+  "project": "Puglies",
+  "name": "NINJAPUG33",
+  "image": "ipfs://QmdxjJNB2CVFdoQJuJ8UJDc3PxqGW6YSE6oVuMHVBJDcJX",
+  "type": "image/png",
+  "authors": [
+    "devhulk",
+    "emzo"
+  ],
+  "website": "https://puglies.io",
+  "traits": [
+    {
+      "trait_type": "background",
+      "value": "ninja_bg_green25"
+    },
+    {
+      "trait_type": "body",
+      "value": "original_body"
+    },
+    {
+      "trait_type": "ears",
+      "value": "regular_ears50"
+    },
+    {
+      "trait_type": "head",
+      "value": "original_head"
+    },
+    {
+      "trait_type": "nose",
+      "value": "blue_green_goblin80"
+    },
+    {
+      "trait_type": "eyes",
+      "value": "biz_army_green10"
+    },
+    {
+      "trait_type": "clothing",
+      "value": "orange_ninja60"
+    }
+  ],
+  "id": "PUGLIES153"
+}
