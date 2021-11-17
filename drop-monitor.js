@@ -152,7 +152,7 @@ const run = () => {
     
     getCurrentUTXOs
         .then((utxos) => {
-            console.log(utxos)
+            console.log(JSON.parse(utxos))
         //         updatePayments(dropMonitor.payments)
         //         .then(results => {
         //             runResults.payments = results 
