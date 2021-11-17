@@ -1,4 +1,33 @@
 {
-  "mint": {"_id":"da75acddf7876a4e3fd421cb7d994709566e001e931a37fba78a26da198059dc","address":"addr1v8apfp60gzp0cu7fh2gm45nah0hvrr7u427decmdxlrddfglt0df7","inputAddress":"addr1v8apfp60gzp0cu7fh2gm45nah0hvrr7u427decmdxlrddfglt0df7","recieved":{"unit":"75caaacb100ecbaf7e89f21169d1d79e2337070d8ffb6df3e890d7c24e494e4a415055473333","quantity":"1"},"unspent":{"output":"17435649","txix":"da75acddf7876a4e3fd421cb7d994709566e001e931a37fba78a26da198059dc#0"},"policyID":"75caaacb100ecbaf7e89f21169d1d79e2337070d8ffb6df3e890d7c2","tokenName":"NINJAPUG33","sentStatus":false},
-  "payment":{"_id":"f901fe9a8e207e5749e07e7b58d1dfc6121831126d96a49e7464c6972c10ea82","txHash":"f901fe9a8e207e5749e07e7b58d1dfc6121831126d96a49e7464c6972c10ea82","customerAddress":"addr1q85hwfjledcyyxgpqvz5s9x6jq7jh75v7zz4xtyvwfq2jssrer6kyuh37cpdvqjp5k203etce7yz7q94yxjpwgv9yuvsp6r7vq","payment":{"$numberInt":"20"},"recievingAddress":"addr1v8apfp60gzp0cu7fh2gm45nah0hvrr7u427decmdxlrddfglt0df7","lovelace":"20000000","txix":"f901fe9a8e207e5749e07e7b58d1dfc6121831126d96a49e7464c6972c10ea82#0","unspent":{"output":"20000000","txix":"f901fe9a8e207e5749e07e7b58d1dfc6121831126d96a49e7464c6972c10ea82#0"}} 
+  "mint": {
+    "_id": "da75acddf7876a4e3fd421cb7d994709566e001e931a37fba78a26da198059dc",
+    "address": "addr1v8apfp60gzp0cu7fh2gm45nah0hvrr7u427decmdxlrddfglt0df7",
+    "inputAddress": "addr1v8apfp60gzp0cu7fh2gm45nah0hvrr7u427decmdxlrddfglt0df7",
+    "recieved": {
+      "unit": "75caaacb100ecbaf7e89f21169d1d79e2337070d8ffb6df3e890d7c24e494e4a415055473333",
+      "quantity": "1"
+    },
+    "unspent": {
+      "output": "17435649",
+      "txix": "da75acddf7876a4e3fd421cb7d994709566e001e931a37fba78a26da198059dc#0"
+    },
+    "policyID": "75caaacb100ecbaf7e89f21169d1d79e2337070d8ffb6df3e890d7c2",
+    "tokenName": "NINJAPUG33",
+    "sentStatus": false
+  },
+  "payment": {
+    "_id": "f901fe9a8e207e5749e07e7b58d1dfc6121831126d96a49e7464c6972c10ea82",
+    "txHash": "f901fe9a8e207e5749e07e7b58d1dfc6121831126d96a49e7464c6972c10ea82",
+    "customerAddress": "addr1q85hwfjledcyyxgpqvz5s9x6jq7jh75v7zz4xtyvwfq2jssrer6kyuh37cpdvqjp5k203etce7yz7q94yxjpwgv9yuvsp6r7vq",
+    "payment": {
+      "$numberInt": "20"
+    },
+    "recievingAddress": "addr1v8apfp60gzp0cu7fh2gm45nah0hvrr7u427decmdxlrddfglt0df7",
+    "lovelace": "20000000",
+    "txix": "f901fe9a8e207e5749e07e7b58d1dfc6121831126d96a49e7464c6972c10ea82#0",
+    "unspent": {
+      "output": "20000000",
+      "txix": "f901fe9a8e207e5749e07e7b58d1dfc6121831126d96a49e7464c6972c10ea82#0"
+    }
+  }
 }
