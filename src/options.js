@@ -11,7 +11,6 @@ let options = (walletName = "testOne", metadata = {}, payment = {}, mint = {}) =
         payment
     }
 
-    console.log(config)
     return config     
 
 }

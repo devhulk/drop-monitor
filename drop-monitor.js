@@ -28,7 +28,7 @@ let dropMonitor = {}
 
 let getCurrentUTXOs = axios.post('http://localhost:3572/v1/cardano/address/utxos', request,{ headers: {'Content-Type': 'application/json'}})
                 .then(response => {
-                    console.log(response.data)
+                    // console.log(response.data)
                     // const txs = JSON.parse(response.data)
                     // let myTXs = txs.map((utxo) => {
                     //     if (utxo.amount.length >= 2) {
@@ -152,7 +152,7 @@ const run = () => {
     
     getCurrentUTXOs
         .then((utxos) => {
-            console.log(JSON.parse(utxos.unspent))
+            console.log(JSON.parse(utxos))
         //         updatePayments(dropMonitor.payments)
         //         .then(results => {
         //             runResults.payments = results 
