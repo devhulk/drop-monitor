@@ -91,7 +91,7 @@ let getCurrentUTXOs = axios.post('http://localhost:3572/v1/cardano/address/utxos
                     if (error.response) {
                       // The request was made and the server responded with a status code
                       // that falls out of the range of 2xx
-                      reject(error.response)
+                      console.log(error.response)
                     }
                   });
 
@@ -152,7 +152,7 @@ const run = () => {
     
     getCurrentUTXOs
         .then((utxos) => {
-            console.log(JSON.parse(utxos))
+            console.log(utxos)
         //         updatePayments(dropMonitor.payments)
         //         .then(results => {
         //             runResults.payments = results 
