@@ -26,7 +26,9 @@ let validUTXOs = []
 
 let dropMonitor = {} 
 
-let monitor = axios.post('http://localhost:3572/v1/cardano/address/monitor', request,{ headers: {'Content-Type': 'application/json'}})
+let monitor = () => {
+
+    return axios.post('http://localhost:3572/v1/cardano/address/monitor', request,{ headers: {'Content-Type': 'application/json'}})
                 .then(response => {
                     // console.log(response.data)
                     // const txs = JSON.parse(response.data)
@@ -94,6 +96,7 @@ let monitor = axios.post('http://localhost:3572/v1/cardano/address/monitor', req
                       console.log(error.response)
                     }
                   });
+} 
 
 
 
